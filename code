@@ -132,7 +132,7 @@ do
     end
 end
 local t1 = {
-	Title = "Kira Hub",
+	Title = "Kiki Hub",
 	Version = "0.1",
 	Product = "Steal an Egg",
 	OpenBind = Enum.KeyCode.RightShift,
@@ -156,10 +156,10 @@ local function v26(p1)
 
     return v328
 end
-t1.LogoFile = "Kira" .. "/logo.png"
-t1.LogoFileLight = "Kira" .. "/logo-light.png"
-local n1 = 620
-local n2 = 430
+t1.LogoFile = "Kiki" .. "/logo.png"
+t1.LogoFileLight = "Kiki" .. "/logo-light.png"
+local n1 = 560
+local n2 = 380
 local n3 = 152
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -257,8 +257,8 @@ do
                 return math.max(400, v346), math.max(320, v347)
             end
 
-            u42 = v40()
-            u43 = false
+            u42 = false
+            u43 = true
             u44 = nil
 
             if u42 then
@@ -4678,7 +4678,7 @@ do
 		}
     end
 end
-local v294 = v259("About", "Kira Hub for Steal an Egg")
+local v294 = v259("About", "Kiki Hub for Steal an Egg")
 local v295 = v259("Auto Steal", "targeting, filters, travel")
 local v296 = v259("Plot", "eggs, pets, upgrades, selling")
 local v297 = v259("Serverhop", "fill a reason, then turn Auto hop on")
@@ -5335,9 +5335,9 @@ function t10.UIScale.on(p136)
     v108.Scale = p136 / 100
 end
 function t10.PhoneUI.on(p137)
+    -- Kiki Hub uses one unified layout on every device.
     u43 = true
-    u42 = not not p137
-
+    u42 = false
     if u44 then
         u44()
     end
@@ -5543,8 +5543,8 @@ v73(UserInputService.InputChanged:Connect(function(input)
             Scale = 1
         end
 
-        local v1048 = not u42 and 520 or 400
-        local v1049 = not u42 and 360 or 320
+        local v1048 = 520
+        local v1049 = 360
         local v1050 = math.max(v1048, v1046.X - 24)
         local v1051 = math.max(v1049, v1046.Y - 24)
         local v1052 = math.clamp(AbsoluteSize.X / Scale + v1044.X / Scale, v1048, v1050)
@@ -5581,8 +5581,8 @@ function u305()
         YOffset = n2
     end
 
-    local v1060 = not u42 and 520 or 400
-    local v1061 = not u42 and 360 or 320
+    local v1060 = 520
+    local v1061 = 360
     local v1062 = math.clamp(XOffset, v1060, math.max(v1060, v1057.X - 24))
     local v1063 = math.clamp(YOffset, v1061, math.max(v1061, v1057.Y - 24))
 
@@ -5602,27 +5602,18 @@ u305()
 function u44()
     local v1064 = not not u42
 
-    n3 = not v1064 and 152 or 128
+    n3 = 152
     v151.Size = UDim2.new(0, n3, 1, 0)
     v194.Position = UDim2.fromOffset(n3, 2)
     v194.Size = UDim2.new(1, -n3, 1, -2)
-    v217.Size = UDim2.fromOffset(not v1064 and 22 or 32, not v1064 and 22 or 32)
-    v306.Size = UDim2.fromOffset(not v1064 and 34 or 48, not v1064 and 34 or 48)
-    v314.Size = UDim2.fromOffset(not v1064 and 18 or 32, not v1064 and 18 or 32)
+    v217.Size = UDim2.fromOffset(22, 22)
+    v306.Size = UDim2.fromOffset(34, 34)
+    v314.Size = UDim2.fromOffset(18, 18)
 
-    if v1064 then
-        v306.Position = UDim2.new(0, 36, 1, -88)
-
-        local v1065, v1066 = v41()
-
-        n1 = v1065
-        n2 = v1066
-        v113.Size = UDim2.fromOffset(v1065, v1066)
-    else
-        n1 = 620
-        n2 = 430
-        v113.Size = UDim2.fromOffset(n1, n2)
-    end
+    v306.Position = UDim2.new(0, 40, 0.5, 0)
+    n1 = 560
+    n2 = 380
+    v113.Size = UDim2.fromOffset(n1, n2)
 
     if u305 then
         u305()
@@ -9628,7 +9619,7 @@ end;
             end
 
             return {
-				name = "Kira Hub"
+				name = "Kiki Hub"
 			}
         end
         local function v1805(p261)
@@ -9910,7 +9901,7 @@ end;
             local t184 = {}
             local Discord = t1.Discord
             local v3018 = tostring(((if type(Discord) == "string" and Discord:match("%S") ~= nil then (if not Discord:find("discord%.", 1) and not Discord:find("http", 1, true) then "discord.gg/" .. Discord else Discord) else nil)) or (t1.Discord or "")):gsub("^https://", "")
-            t184.text = v3018 == "" and "Kira Hub" or "Kira Hub · " .. v3018
+            t184.text = v3018 == "" and "Kiki Hub" or "Kiki Hub · " .. v3018
             t183.footer = t184
             local v3019 = p272.description and tostring(p272.description) or ""
             if v3014 then
@@ -9982,7 +9973,7 @@ end;
                 end
             end
             local t187 = {
-				username = "Kira Hub",
+				username = "Kiki Hub",
 				embeds = { t183 }
 			}
             local HookPing = t9.HookPing
@@ -23539,130 +23530,6 @@ end;
     local v1244 = v51()
     v1244.unload = u323
     v1244.alive = true
-
-    -- ============================================================
-    -- KIRA RUNTIME SAFETY LAYER
-    -- NOTE: This layer is for runtime stability, cleanup, loop
-    -- protection and recovery. It does NOT bypass Roblox anti-cheat.
-    -- ============================================================
-    local KiraSafety = v1243.KiraSafety
-    if type(KiraSafety) ~= "table" then
-        KiraSafety = {}
-        v1243.KiraSafety = KiraSafety
-    end
-
-    KiraSafety.enabled = true
-    KiraSafety.startedAt = os.clock()
-    KiraSafety.lastState = nil
-    KiraSafety.stateSince = os.clock()
-    KiraSafety.errorCount = 0
-    KiraSafety.errorWindow = os.clock()
-    KiraSafety.maxErrorsPerWindow = 8
-    KiraSafety.errorWindowSeconds = 10
-    KiraSafety.maxStateSeconds = 45
-    KiraSafety.lastCharacter = nil
-
-    local function SafetyLog(...)
-        pcall(function()
-            v1102("safety", ...)
-        end)
-    end
-
-    local function SafetyStop(reason)
-        if not KiraSafety.enabled then
-            return
-        end
-
-        KiraSafety.enabled = false
-        SafetyLog("protective stop", tostring(reason or "unknown"))
-
-        pcall(function()
-            v1238("AutoSteal", false)
-        end)
-
-        pcall(function()
-            if t9.Flight or t9.BypassSpeed then
-                t9.Flight = false
-                t9.BypassSpeed = false
-            end
-            v1183(false)
-        end)
-    end
-
-    function KiraSafety.ReportError(source)
-        local now = os.clock()
-
-        if now - (KiraSafety.errorWindow or now) > KiraSafety.errorWindowSeconds then
-            KiraSafety.errorWindow = now
-            KiraSafety.errorCount = 0
-        end
-
-        KiraSafety.errorCount = (KiraSafety.errorCount or 0) + 1
-
-        if KiraSafety.errorCount >= KiraSafety.maxErrorsPerWindow then
-            SafetyStop("repeated errors: " .. tostring(source or "unknown"))
-        end
-    end
-
-    -- Character/engine recovery monitor. It only stops automation when
-    -- the runtime is clearly unhealthy; it does not attempt to hide or
-    -- defeat server-side detection.
-    local safetyConnection
-    pcall(function()
-        safetyConnection = RunService.Heartbeat:Connect(function()
-            if not KiraSafety.enabled then
-                return
-            end
-
-            local now = os.clock()
-            local character = LocalPlayer and LocalPlayer.Character
-            local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-            local root = character and character:FindFirstChild("HumanoidRootPart")
-
-            if character ~= KiraSafety.lastCharacter then
-                KiraSafety.lastCharacter = character
-                KiraSafety.stateSince = now
-                return
-            end
-
-            if t216 and t216.running then
-                local state = tostring(t216.state or "unknown")
-
-                if state ~= KiraSafety.lastState then
-                    KiraSafety.lastState = state
-                    KiraSafety.stateSince = now
-                elseif now - (KiraSafety.stateSince or now) > KiraSafety.maxStateSeconds then
-                    SafetyStop("state timeout: " .. state)
-                    return
-                end
-            end
-
-            if humanoid and humanoid.Health <= 0 then
-                pcall(function()
-                    v1238("AutoSteal", false)
-                end)
-                return
-            end
-
-            if t216 and t216.running and (not character or not humanoid or not root) then
-                SafetyStop("character unavailable")
-            end
-        end)
-    end)
-
-    -- Ensure the safety connection is removed together with the menu.
-    local originalDestroy = u323
-    u323 = function(...)
-        KiraSafety.enabled = false
-        if safetyConnection then
-            pcall(function()
-                safetyConnection:Disconnect()
-            end)
-            safetyConnection = nil
-        end
-        return originalDestroy(...)
-    end
-
     v1243.KiraUnloadUid = str
     function v1243.KiraUnload()
         local LocalPlayer2 = Players.LocalPlayer
@@ -23735,6 +23602,7 @@ end;
             return v2683(...)
         end
     end
-    print("[UI] Kira Hub ready · RightShift toggles · Dark / Light in Settings")
+    print("[UI] Kiki Hub ready · RightShift toggles · Dark / Light in Settings")
     v1102("boot", "game logic attached · KiraDump() in F9")
 end)()
+```
